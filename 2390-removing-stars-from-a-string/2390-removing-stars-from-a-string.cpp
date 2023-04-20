@@ -1,25 +1,19 @@
 class Solution {
 public:
-    string ans;
-    void remove(string &s,int index,string &ans)
+    string removeStars(string s)
     {
-        if(index>=s.size())
+        string ans;
+        for(int i=0;i<s.size();i++)
         {
-            return;
-        }
-        if(s[index]=='*')
+          if(s[i]=='*')
         {
             ans.pop_back();
         }
         else
         {
-            ans.push_back(s[index]);
+            ans.push_back(s[i]);
         }
-        remove(s,index+1,ans);
-    }
-    string removeStars(string s)
-    {
-        remove(s,0,ans);
+        }
         return ans;
     }
         
