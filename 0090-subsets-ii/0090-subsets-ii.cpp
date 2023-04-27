@@ -1,29 +1,29 @@
 class Solution {
 public:
     vector<vector<int>>ans;
-    void subset(vector<int>&nums,vector<int>&output,int index)
+    void subset(vector<int>&nums,vector<int>&out,int index)
     {
     if (index==nums.size())
     {
-        ans.push_back(output);
+        ans.push_back(out);
         return;
     }
     // include call
-    output.push_back(nums[index]);
-     subset(nums,output,index+1);
-      output.pop_back();
+    out.push_back(nums[index]);
+     subset(nums,out,index+1);
+      out.pop_back();
    while(index+1<nums.size() and nums[index]==nums[index+1])
    {
        index++;
    }
     //exclude call
-    subset(nums,output,index+1);
+    subset(nums,out,index+1);
 }
     vector<vector<int>> subsetsWithDup(vector<int>& nums)
     {
-       vector<int>output;
+       vector<int>out;
        sort(nums.begin(),nums.end());
-        subset(nums,output,0);
+        subset(nums,out,0);
         return ans; 
     }
 };
