@@ -3,20 +3,20 @@ public:
     int countConsistentStrings(string allowed, vector<string>& words) 
     {
         int count=0;
-        set<char>st;
+        map<char,int>mp;
         for(int i=0;i<words.size();i++)
         {
             string k=words[i];
             k+=allowed;
             for(int j=0;j<k.size();j++)
             {
-               st.insert(k[j]);
+               mp[k[j]]++;
             }
-            if(st.size()==allowed.size())
+            if(mp.size()==allowed.size())
             {
                 count++;
             }
-            st.clear();
+            mp.clear();
            
         }
         return count;
