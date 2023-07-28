@@ -32,7 +32,7 @@ public:
          ListNode* curr=head;
          ListNode* prev=NULL;
         int count=0;
-        while(curr!=NULL && count<k)
+        while(count<k)
         {
             forword=curr->next;
             curr->next=prev;
