@@ -10,30 +10,20 @@
  */
 class Solution {
 public:
-    int len(ListNode*head)
-    {
-         ListNode* temp = head;
-        int count = 0;
-        while(temp!=NULL){
-            count++;
-            temp=temp->next;
-        }
-        return count;
-    }
     ListNode* deleteMiddle(ListNode* head) 
     {
-        int size=len(head);
-        int mid=size/2;
-         if(head==NULL || head->next==NULL) return NULL;
-        ListNode* temp=head;
-       for(int i=0;i<mid;i++){
-            if(i==mid-1){
-                ListNode* todelete = temp->next;
-                temp->next=temp->next->next;
-                delete todelete;
-            }
-            temp=temp->next;
+        ListNode* slow=head;
+        ListNode* fast=head;
+        ListNode* todelete; 
+        if(head==NULL || head->next==NULL) return NULL;
+        while(fast && fast->next)
+        {
+             todelete=slow;
+              fast=fast->next->next;
+             slow=slow->next;
         }
+        todelete->next=todelete->next->next;
         return head;
+        
     }
 };
