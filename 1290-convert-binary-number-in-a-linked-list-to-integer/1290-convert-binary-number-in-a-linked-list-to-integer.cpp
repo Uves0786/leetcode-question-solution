@@ -10,24 +10,20 @@
  */
 class Solution {
 public:
-    int getDecimalValue(ListNode* head) 
-    {
-        int size=0;
+    int getDecimalValue(ListNode* head) {
+        
         int ans=0;
-        string s;
         ListNode* temp=head;
-        while(temp!=NULL)
-        {
-          s+=to_string(temp->val);
-          temp=temp->next;
+        string s;
+        while(temp!=NULL){
+            s+=to_string(temp->val);
+            temp=temp->next;
         }
-        reverse(s.begin(),s.end());
-        for(int i=0;i<s.size();i++)
-        {
-           if(s[i]=='1')
-           {
-                ans+=(pow(2,i));
-           }
+          reverse(s.begin(),s.end());
+        for(int i=0;i<s.size();i++){
+            if(s[i]=='1'){
+                ans+=pow(2,i);
+            }
         }
         return ans;
     }
