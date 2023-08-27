@@ -10,20 +10,26 @@
  */
 class Solution {
 public:
-    ListNode* deleteMiddle(ListNode* head) 
-    {
-        ListNode* slow=head;
-        ListNode* fast=head;
-        ListNode* todelete; 
-        if(head==NULL || head->next==NULL) return NULL;
-        while(fast && fast->next)
-        {
-             todelete=slow;
-              fast=fast->next->next;
-             slow=slow->next;
-        }
-        todelete->next=todelete->next->next;
-        return head;
+    ListNode* deleteMiddle(ListNode* head) {
         
+        ListNode* mp=head;
+        int size=0,count=0;
+        while(mp!=NULL){
+            size++;
+            mp=mp->next;
+        }
+        int mid=size/2;
+          ListNode* temp=head;
+         if(head==NULL || head->next==NULL) return NULL;
+        for(int i=0;i<mid;i++){
+            if(i==mid-1){
+              ListNode* to_delete=temp->next;
+                temp->next=temp->next->next;
+                delete to_delete;
+ 
+            }
+            temp=temp->next;
+        }
+        return head;
     }
 };
