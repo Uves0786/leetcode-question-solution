@@ -8,23 +8,21 @@
  */
 class Solution {
 public:
-    bool hasCycle(ListNode *head) 
-    {
-      if(head==NULL)
-      {
-          return false;
-      }
-       ListNode* temp=head;
-      ListNode* remp=head;
-       while(temp!=NULL && temp->next!=NULL)
-       {
-           temp=temp->next->next;
-           remp=remp->next;
-            if(temp==remp)
-            {
+    bool hasCycle(ListNode *head) {
+         if(head==NULL)
+          {
+              return false;
+          }
+        ListNode *temp=head;
+        ListNode *slow=temp;
+        ListNode *fast=temp;
+        while(fast!=NULL and fast->next!=NULL){
+            slow=slow->next;
+            fast=fast->next->next;
+            if(slow==fast){
                 return true;
             }
-       }
+        }
         return false;
     }
 };
