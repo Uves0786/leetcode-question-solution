@@ -10,41 +10,26 @@
  */
 class Solution {
 public:
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) 
-    {
-        ListNode* temp=new ListNode(-1);
-        ListNode* ptr1=list1;
-          ListNode* ptr2=list2;
-          ListNode* ptr3=temp;
-        while(ptr1!=NULL && ptr2!=NULL)
-        {
-            if(ptr1->val<ptr2->val)
-            {
-                ptr3->next=ptr1;
-                ptr1=ptr1->next;
-            }
-            else
-            {
-               ptr3->next=ptr2;
-                ptr2=ptr2->next;
-            }
-               ptr3=ptr3->next;
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        vector<int>v1;
+        ListNode* temp=list1;
+        ListNode* remp=list2;
+        while(temp!=NULL){
+            v1.push_back(temp->val);
+            temp=temp->next;
         }
-        while(ptr1!=NULL)
-        {
-                ptr3->next=ptr1;
-                ptr1=ptr1->next;
-                ptr3=ptr3->next; 
+        while(remp!=NULL){
+            v1.push_back(remp->val);
+            remp=remp->next;
         }
-            while(ptr2!=NULL)
+        sort(v1.rbegin(),v1.rend());
+        ListNode* uni=NULL;
+        for(vector<int>::iterator it = v1.begin(); it!=v1.end(); it++)
         {
-                ptr3->next=ptr2;
-                ptr2=ptr2->next;
-                ptr3=ptr3->next; 
+            ListNode*sort=new ListNode(*it);
+            sort->next=uni;
+            uni=sort;
         }
-        
-        return temp->next;
-        
-        
+        return uni;
     }
 };
