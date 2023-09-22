@@ -3,7 +3,6 @@ public:
     bool isSubsequence(string s, string t)
     {
        bool flag=false;
-        vector<char>v1;
         int i=s.size();
         int j=t.size();
         while(i>=0 && j>=0)
